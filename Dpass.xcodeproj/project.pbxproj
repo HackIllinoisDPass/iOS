@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F15020413FAD009730D1 /* AppDelegate.swift */; };
-		A906F15320413FAD009730D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F15220413FAD009730D1 /* ViewController.swift */; };
 		A906F15620413FAD009730D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15420413FAD009730D1 /* Main.storyboard */; };
 		A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */; };
 		A906F15B20413FAD009730D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A906F15A20413FAD009730D1 /* Assets.xcassets */; };
 		A906F15E20413FAD009730D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */; };
 		A906F16920413FAD009730D1 /* DpassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F16820413FAD009730D1 /* DpassTests.swift */; };
+		A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17420415A8A009730D1 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +29,6 @@
 /* Begin PBXFileReference section */
 		A906F14D20413FAD009730D1 /* Dpass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dpass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A906F15020413FAD009730D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A906F15220413FAD009730D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A906F15520413FAD009730D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A906F15820413FAD009730D1 /* Dpass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dpass.xcdatamodel; sourceTree = "<group>"; };
 		A906F15A20413FAD009730D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		A906F16420413FAD009730D1 /* DpassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DpassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A906F16820413FAD009730D1 /* DpassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DpassTests.swift; sourceTree = "<group>"; };
 		A906F16A20413FAD009730D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A906F17420415A8A009730D1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +65,7 @@
 				A906F14F20413FAD009730D1 /* Dpass */,
 				A906F16720413FAD009730D1 /* DpassTests */,
 				A906F14E20413FAD009730D1 /* Products */,
+				A906F17320415A8A009730D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				A906F15020413FAD009730D1 /* AppDelegate.swift */,
-				A906F15220413FAD009730D1 /* ViewController.swift */,
 				A906F15420413FAD009730D1 /* Main.storyboard */,
 				A906F15A20413FAD009730D1 /* Assets.xcassets */,
 				A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */,
@@ -97,6 +98,14 @@
 				A906F16A20413FAD009730D1 /* Info.plist */,
 			);
 			path = DpassTests;
+			sourceTree = "<group>";
+		};
+		A906F17320415A8A009730D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A906F17420415A8A009730D1 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +211,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A906F15320413FAD009730D1 /* ViewController.swift in Sources */,
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
 				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
 			);
