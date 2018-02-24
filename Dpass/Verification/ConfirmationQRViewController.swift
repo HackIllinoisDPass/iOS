@@ -19,6 +19,9 @@ class ConfirmationQRViewController: UIViewController {
     var long: String?
     var publicKey: String?
 
+    @IBAction func doneAction(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if let date = date, let lat = lat, let long = long, let publicKey = publicKey{

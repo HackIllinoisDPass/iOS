@@ -23,22 +23,17 @@ class LedgerTableViewController: UITableViewController {
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
     
-    
     let tempLat = "40.1142726739917"
     let tempLong = "-88.2254133647812"
     
-    var city: String?
-    var country: String?
-    var countryShortName: String?
+    var geoLocationArray: [Geolocation] = []
     
     // here I am declaring the iVars for city and country to access them later
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HEY")
-        locationManager.requestWhenInUseAuthorization()
-        let location = convertToGeoCode(lat: tempLat, long: tempLong)
-        print(location?.city)
+        convertToGeoCode(lat: tempLat, long: tempLong)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,15 +45,13 @@ class LedgerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return geoLocationArray.count
     }
     
-    func convertToGeoCode(lat: String?, long: String?) -> Geolocation?{
-        
-        var geolocation = Geolocation()
+    func convertToGeoCode(lat: String?, long: String?){
         
         guard let lat = lat, let long = long else{
-            return nil
+            return
         }
         
         let filledLat = Double(lat)
@@ -67,9 +60,9 @@ class LedgerTableViewController: UITableViewController {
         let convertedLat = CLLocationDegrees(filledLat!)
         let convertedLong = CLLocationDegrees(filledLong!)
         
-        let location = CLLocation(latitude: convertedLat, longitude: convertedLong)
+        location = CLLocation(latitude: convertedLat, longitude: convertedLong)
         
-        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
+        geocoder.reverseGeocodeLocation(location!, completionHandler: { (placemarks, error) in
             // always good to check if no error
             // also we have to unwrap the placemark because it's optional
             // I have done all in a single if but you check them separately
@@ -78,16 +71,16 @@ class LedgerTableViewController: UITableViewController {
             }
             // a new function where you start to parse placemarks to get the information you need
             self.parsePlacemarks()
+            
+            
+            print(self.geoLocationArray[0].city)
         })
-        
-        geolocation.city = city
-        geolocation.country = country
-        geolocation.countryShortName = countryShortName
-        
-        return geolocation
     }
     
     func parsePlacemarks(){
+        
+        var newGeolocation = Geolocation()
+        
         if let _ = location {
             // unwrap the placemark
             if let placemark = placemark {
@@ -96,22 +89,24 @@ class LedgerTableViewController: UITableViewController {
                 if let city = placemark.locality, !city.isEmpty {
                     // here you have the city name
                     // assign city name to our iVar
-                    self.city = city
+                    newGeolocation.city = city
                 }
                 // the same story optionalllls also they are not empty
                 if let country = placemark.country, !country.isEmpty {
-                    self.country = country
+                    newGeolocation.country = country
                 }
                 
                 // get the country short name which is called isoCountryCode
                 if let countryShortName = placemark.isoCountryCode, !countryShortName.isEmpty {
-                    self.countryShortName = countryShortName
+                    newGeolocation.countryShortName = countryShortName
                 }
             }
         } else {
         // add some more check's if for some reason location manager is nil
             print("location manager is nil")
         }
+        
+        geoLocationArray.append(newGeolocation)
     }
 
     /*
