@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
 
@@ -47,7 +48,13 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func setupQRCode(location: String, publicKey: String) {
-        let dataString = "\(currTime.toString(dateFormat: "dd-MMM-yyyy")),\(location),\(publicKey)"
+        
+        guard let name = getName() else {
+            print("name not set")
+            return
+        }
+        
+        let dataString = "\(currTime.toString(dateFormat: "dd-MMM-yyyy")),\(location),\(publicKey),\(name)"
         print(dataString)
         
         let data = dataString.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
@@ -65,6 +72,17 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
         let transformedImage = qrCodeImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         
         QRImageView.image = UIImage(ciImage: transformedImage)
+    }
+    
+    func getName() -> String?{
+        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+        do {
+            let owner = try PersistentService.context.fetch(fetchRequest)
+            return owner[0].name
+        } catch{
+            print("failed getting name")
+            return nil
+        }
     }
 
 }

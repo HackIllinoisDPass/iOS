@@ -8,10 +8,17 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
 class VerificationScannerViewController: UIViewController {
 
     @IBOutlet var topBar: UIView!
+    
+    let locationManager = CLLocationManager()
+    var location: CLLocation?
+    
+    let geocoder = CLGeocoder()
+    var placemark: CLPlacemark?
     
     var captureSession = AVCaptureSession()
     
@@ -22,6 +29,9 @@ class VerificationScannerViewController: UIViewController {
     var lat: String?
     var long: String?
     var publicKey: String?
+    var name: String?
+    
+    var geoLocationObject: Event?
     
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
@@ -116,20 +126,26 @@ class VerificationScannerViewController: UIViewController {
             lat = String(modifiedMessageArray[1])
             long = String(modifiedMessageArray[2])
             publicKey = String(modifiedMessageArray[3])
+            name = String(modifiedMessageArray[4])
             
-            let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])\nLong: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
-            
-            let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
-            let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-                self.callCameraSegue()
+            convertToGeoCode(lat: lat, long: long, completionHandler: {
+                guard let city = geoLocationObject?.city, let countryShortName = geoLocationObject?.countryShortName else{
+                    return
+                }
+                
+                let readableMessage = "Name: \(modifiedMessageArray[4])\nDate: \(modifiedMessageArray[0])\nLocation: \(city), \(countryShortName)\nPublicKey: \(modifiedMessageArray[3])\n"
+                
+                let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
+                let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                    self.callCameraSegue()
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                alertPrompt.addAction(confirmAction)
+                alertPrompt.addAction(cancelAction)
+                
+                present(alertPrompt, animated: true, completion: nil)
             })
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-            
-            alertPrompt.addAction(confirmAction)
-            alertPrompt.addAction(cancelAction)
-            
-            present(alertPrompt, animated: true, completion: nil)
         }else{
             invalidQRAlert()
         }
@@ -146,7 +162,7 @@ class VerificationScannerViewController: UIViewController {
     }
     
     func callCameraSegue() {
-         performSegue(withIdentifier: "showVerification", sender: self)
+        performSegue(withIdentifier: "showVerification", sender: self)
     }
     
     func invalidQRAlert() {
@@ -159,9 +175,68 @@ class VerificationScannerViewController: UIViewController {
         alertPrompt.addAction(action)
         present(alertPrompt, animated: true, completion: nil)
     }
+    
+    func convertToGeoCode(lat: String?, long: String?, completionHandler: ()->(Void)){
+        
+        guard let lat = lat, let long = long else{
+            return
+        }
+        
+        let filledLat = Double(lat)
+        let filledLong = Double(long)
+        
+        let convertedLat = CLLocationDegrees(filledLat!)
+        let convertedLong = CLLocationDegrees(filledLong!)
+        
+        location = CLLocation(latitude: convertedLat, longitude: convertedLong)
+        
+        geocoder.reverseGeocodeLocation(location!, completionHandler: { (placemarks, error) in
+            // always good to check if no error
+            // also we have to unwrap the placemark because it's optional
+            // I have done all in a single if but you check them separately
+            if error == nil, let placemark = placemarks, !placemark.isEmpty {
+                self.placemark = placemark.last
+            }
+            // a new function where you start to parse placemarks to get the information you need
+            self.parsePlacemarks()
+        })
+        
+        completionHandler()
+    }
+    
+    func parsePlacemarks(){
+        
+        var newGeolocation = Event()
+        
+        if let _ = location {
+            // unwrap the placemark
+            if let placemark = placemark {
+                // wow now you can get the city name. remember that apple refers to city name as locality not city
+                // again we have to unwrap the locality remember optionalllls also some times there is no text so we check that it should not be empty
+                if let city = placemark.locality, !city.isEmpty {
+                    // here you have the city name
+                    // assign city name to our iVar
+                    newGeolocation.city = city
+                }
+                // the same story optionalllls also they are not empty
+                if let country = placemark.country, !country.isEmpty {
+                    newGeolocation.country = country
+                }
+                
+                // get the country short name which is called isoCountryCode
+                if let countryShortName = placemark.isoCountryCode, !countryShortName.isEmpty {
+                    newGeolocation.countryShortName = countryShortName
+                }
+            }
+        } else {
+            // add some more check's if for some reason location manager is nil
+            print("location manager is nil")
+        }
+        geoLocationObject = newGeolocation
+    }
 }
 
-    
+
 extension VerificationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
