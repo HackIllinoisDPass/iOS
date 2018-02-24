@@ -111,9 +111,18 @@ class ConfirmationScannerViewController: UIViewController {
             let encyptedMessage = String(modifiedMessageArray[0])
             let verifierPublicKey = String(modifiedMessageArray[1])
             
-            //save the data to the blockchain here!
-            //show user feedback that block was saved.
-            print("Saved!!!")
+            //should post to blockchain here
+            
+            
+            //Display the confirmation to the user
+            let alertPrompt = UIAlertController(title: "Scan Succesfull!", message: "Record sucessfully created!", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            
+            alertPrompt.addAction(action)
+            present(alertPrompt, animated: true, completion: nil)
         }else{
             invalidQRAlert()
         }

@@ -20,6 +20,7 @@
 		A906F17D2041689F009730D1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17C2041689F009730D1 /* CoreLocation.framework */; };
 		A906F17F2041A81A009730D1 /* VerificationScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F17E2041A81A009730D1 /* VerificationScannerViewController.swift */; };
 		A906F1812041AC30009730D1 /* ConfirmationQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1802041AC30009730D1 /* ConfirmationQRViewController.swift */; };
+		A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1842041C250009730D1 /* LedgerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A906F17C2041689F009730D1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A906F17E2041A81A009730D1 /* VerificationScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationScannerViewController.swift; sourceTree = "<group>"; };
 		A906F1802041AC30009730D1 /* ConfirmationQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationQRViewController.swift; sourceTree = "<group>"; };
+		A906F1842041C250009730D1 /* LedgerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		A906F1832041B3A7009730D1 /* Traveler */ = {
 			isa = PBXGroup;
 			children = (
+				A906F1842041C250009730D1 /* LedgerTableViewController.swift */,
 				A906F178204162AE009730D1 /* QRCodeViewController.swift */,
 				A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */,
 			);
@@ -249,6 +252,7 @@
 			files = (
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
 				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
+				A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */,
 				A906F179204162AE009730D1 /* QRCodeViewController.swift in Sources */,
 				A906F17F2041A81A009730D1 /* VerificationScannerViewController.swift in Sources */,
 				A906F1812041AC30009730D1 /* ConfirmationQRViewController.swift in Sources */,
