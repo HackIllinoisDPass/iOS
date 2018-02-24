@@ -15,6 +15,9 @@
 		A906F16920413FAD009730D1 /* DpassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F16820413FAD009730D1 /* DpassTests.swift */; };
 		A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17420415A8A009730D1 /* AVFoundation.framework */; };
 		A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */; };
+		A906F179204162AE009730D1 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F178204162AE009730D1 /* QRCodeViewController.swift */; };
+		A906F17B20416897009730D1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17A20416897009730D1 /* MapKit.framework */; };
+		A906F17D2041689F009730D1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17C2041689F009730D1 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		A906F16A20413FAD009730D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A906F17420415A8A009730D1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationScannerViewController.swift; sourceTree = "<group>"; };
+		A906F178204162AE009730D1 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		A906F17A20416897009730D1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A906F17C2041689F009730D1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A906F17D2041689F009730D1 /* CoreLocation.framework in Frameworks */,
+				A906F17B20416897009730D1 /* MapKit.framework in Frameworks */,
 				A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +98,7 @@
 				A906F15F20413FAD009730D1 /* Info.plist */,
 				A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */,
 				A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */,
+				A906F178204162AE009730D1 /* QRCodeViewController.swift */,
 			);
 			path = Dpass;
 			sourceTree = "<group>";
@@ -106,6 +115,8 @@
 		A906F17320415A8A009730D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A906F17C2041689F009730D1 /* CoreLocation.framework */,
+				A906F17A20416897009730D1 /* MapKit.framework */,
 				A906F17420415A8A009730D1 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -216,6 +227,7 @@
 			files = (
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
 				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
+				A906F179204162AE009730D1 /* QRCodeViewController.swift in Sources */,
 				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

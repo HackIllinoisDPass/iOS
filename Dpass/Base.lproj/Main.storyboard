@@ -75,7 +75,7 @@
         <!--QR-->
         <scene sceneID="mV2-qc-i0V">
             <objects>
-                <viewController id="efW-PB-ilg" sceneMemberID="viewController">
+                <viewController id="efW-PB-ilg" customClass="QRCodeViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jrV-9W-yit">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,6 +110,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="QRImageView" destination="bDq-dM-22x" id="EYp-rY-ww7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sx4-19-BLI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

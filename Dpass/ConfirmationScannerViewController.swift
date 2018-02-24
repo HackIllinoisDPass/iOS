@@ -94,20 +94,19 @@ class ConfirmationScannerViewController: UIViewController {
     }
     
     // MARK: - Helper methods
-    func launchApp(decodedURL: String) {
+    // TODO: WILL NEED TO EDIT HERE
+    func launchApp(decodedMessage: String) {
         
         if presentedViewController != nil {
             return
         }
         
-        let alertPrompt = UIAlertController(title: "Open App", message: "You're going to open \(decodedURL)", preferredStyle: .actionSheet)
+        let readableMessage = decodedMessage.replacingOccurrences(of: ",", with: "\n", options: .literal, range: nil)
+
+        let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             
-            if let url = URL(string: decodedURL) {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
+            //DO THE COMPLETED ACTION HERE AKA WRITE TO THE BLOCKCHAIN
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
@@ -138,7 +137,7 @@ extension ConfirmationScannerViewController: AVCaptureMetadataOutputObjectsDeleg
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                launchApp(decodedURL: metadataObj.stringValue!)
+                launchApp(decodedMessage: metadataObj.stringValue!)
             }
         }
     }
