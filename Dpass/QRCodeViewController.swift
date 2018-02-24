@@ -30,7 +30,7 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
+        locationManager.stopUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
