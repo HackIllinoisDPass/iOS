@@ -43,11 +43,11 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
         //print("locations = \(locValue.latitude) \(locValue.longitude)")
         let currLocation = "\(locValue.latitude),\(locValue.longitude)"
         
-        setupQRCode(location: currLocation)
+        setupQRCode(location: currLocation, publicKey: "12345")
     }
     
-    func setupQRCode(location: String) {
-        let dataString = currTime.toString(dateFormat: "dd-MMM-yyyy") + "," + location
+    func setupQRCode(location: String, publicKey: String) {
+        let dataString = "\(currTime.toString(dateFormat: "dd-MMM-yyyy")),\(location),\(publicKey)"
         print(dataString)
         
         let data = dataString.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)

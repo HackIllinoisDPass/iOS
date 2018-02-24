@@ -103,7 +103,7 @@ class ConfirmationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])Long: \(modifiedMessageArray[2])\n"
+        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])Long: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
 
         let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
