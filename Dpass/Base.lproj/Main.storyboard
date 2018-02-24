@@ -118,7 +118,7 @@
         <!--Scan Confirmation-->
         <scene sceneID="ece-Mk-VaW">
             <objects>
-                <viewController id="oFJ-iL-Rhn" sceneMemberID="viewController">
+                <viewController id="oFJ-iL-Rhn" customClass="ConfirmationScannerViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LWK-NY-CBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,6 +126,10 @@
                         <viewLayoutGuide key="safeArea" id="dMg-U0-FyV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan Confirmation" id="xLU-3j-ZyC"/>
+                    <connections>
+                        <outlet property="topBar" destination="LWK-NY-CBE" id="qeL-Wi-sZK"/>
+                        <outlet property="topbar" destination="LWK-NY-CBE" id="Um9-Oa-req"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcl-5I-efX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

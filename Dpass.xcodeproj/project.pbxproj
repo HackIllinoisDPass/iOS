@@ -14,6 +14,7 @@
 		A906F15E20413FAD009730D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */; };
 		A906F16920413FAD009730D1 /* DpassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F16820413FAD009730D1 /* DpassTests.swift */; };
 		A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F17420415A8A009730D1 /* AVFoundation.framework */; };
+		A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		A906F16820413FAD009730D1 /* DpassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DpassTests.swift; sourceTree = "<group>"; };
 		A906F16A20413FAD009730D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A906F17420415A8A009730D1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationScannerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */,
 				A906F15F20413FAD009730D1 /* Info.plist */,
 				A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */,
+				A906F17620415BE9009730D1 /* ConfirmationScannerViewController.swift */,
 			);
 			path = Dpass;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
+				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
 				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
