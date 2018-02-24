@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F15020413FAD009730D1 /* AppDelegate.swift */; };
+		A906F15320413FAD009730D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F15220413FAD009730D1 /* ViewController.swift */; };
+		A906F15620413FAD009730D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15420413FAD009730D1 /* Main.storyboard */; };
+		A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */; };
+		A906F15B20413FAD009730D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A906F15A20413FAD009730D1 /* Assets.xcassets */; };
+		A906F15E20413FAD009730D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */; };
+		A906F16920413FAD009730D1 /* DpassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F16820413FAD009730D1 /* DpassTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A906F16520413FAD009730D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A906F14520413FAC009730D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A906F14C20413FAC009730D1;
+			remoteInfo = Dpass;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A906F14D20413FAD009730D1 /* Dpass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dpass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A906F15020413FAD009730D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A906F15220413FAD009730D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A906F15520413FAD009730D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A906F15820413FAD009730D1 /* Dpass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Dpass.xcdatamodel; sourceTree = "<group>"; };
+		A906F15A20413FAD009730D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A906F15D20413FAD009730D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A906F15F20413FAD009730D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A906F16420413FAD009730D1 /* DpassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DpassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A906F16820413FAD009730D1 /* DpassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DpassTests.swift; sourceTree = "<group>"; };
+		A906F16A20413FAD009730D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A906F14A20413FAC009730D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A906F16120413FAD009730D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A906F14420413FAC009730D1 = {
+			isa = PBXGroup;
+			children = (
+				A906F14F20413FAD009730D1 /* Dpass */,
+				A906F16720413FAD009730D1 /* DpassTests */,
+				A906F14E20413FAD009730D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A906F14E20413FAD009730D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A906F14D20413FAD009730D1 /* Dpass.app */,
+				A906F16420413FAD009730D1 /* DpassTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A906F14F20413FAD009730D1 /* Dpass */ = {
+			isa = PBXGroup;
+			children = (
+				A906F15020413FAD009730D1 /* AppDelegate.swift */,
+				A906F15220413FAD009730D1 /* ViewController.swift */,
+				A906F15420413FAD009730D1 /* Main.storyboard */,
+				A906F15A20413FAD009730D1 /* Assets.xcassets */,
+				A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */,
+				A906F15F20413FAD009730D1 /* Info.plist */,
+				A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */,
+			);
+			path = Dpass;
+			sourceTree = "<group>";
+		};
+		A906F16720413FAD009730D1 /* DpassTests */ = {
+			isa = PBXGroup;
+			children = (
+				A906F16820413FAD009730D1 /* DpassTests.swift */,
+				A906F16A20413FAD009730D1 /* Info.plist */,
+			);
+			path = DpassTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A906F14C20413FAC009730D1 /* Dpass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A906F16D20413FAD009730D1 /* Build configuration list for PBXNativeTarget "Dpass" */;
+			buildPhases = (
+				A906F14920413FAC009730D1 /* Sources */,
+				A906F14A20413FAC009730D1 /* Frameworks */,
+				A906F14B20413FAC009730D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dpass;
+			productName = Dpass;
+			productReference = A906F14D20413FAD009730D1 /* Dpass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A906F16320413FAD009730D1 /* DpassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A906F17020413FAD009730D1 /* Build configuration list for PBXNativeTarget "DpassTests" */;
+			buildPhases = (
+				A906F16020413FAD009730D1 /* Sources */,
+				A906F16120413FAD009730D1 /* Frameworks */,
+				A906F16220413FAD009730D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A906F16620413FAD009730D1 /* PBXTargetDependency */,
+			);
+			name = DpassTests;
+			productName = DpassTests;
+			productReference = A906F16420413FAD009730D1 /* DpassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A906F14520413FAC009730D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = HackIllinoisDPass;
+				TargetAttributes = {
+					A906F14C20413FAC009730D1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					A906F16320413FAD009730D1 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A906F14C20413FAC009730D1;
+					};
+				};
+			};
+			buildConfigurationList = A906F14820413FAC009730D1 /* Build configuration list for PBXProject "Dpass" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A906F14420413FAC009730D1;
+			productRefGroup = A906F14E20413FAD009730D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A906F14C20413FAC009730D1 /* Dpass */,
+				A906F16320413FAD009730D1 /* DpassTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A906F14B20413FAC009730D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A906F15E20413FAD009730D1 /* LaunchScreen.storyboard in Resources */,
+				A906F15B20413FAD009730D1 /* Assets.xcassets in Resources */,
+				A906F15620413FAD009730D1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A906F16220413FAD009730D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A906F14920413FAC009730D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A906F15320413FAD009730D1 /* ViewController.swift in Sources */,
+				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
+				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A906F16020413FAD009730D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A906F16920413FAD009730D1 /* DpassTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A906F16620413FAD009730D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A906F14C20413FAC009730D1 /* Dpass */;
+			targetProxy = A906F16520413FAD009730D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A906F15420413FAD009730D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A906F15520413FAD009730D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A906F15D20413FAD009730D1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A906F16B20413FAD009730D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A906F16C20413FAD009730D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A906F16E20413FAD009730D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Dpass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DPass.Dpass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A906F16F20413FAD009730D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Dpass/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DPass.Dpass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A906F17120413FAD009730D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DpassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DPass.DpassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dpass.app/Dpass";
+			};
+			name = Debug;
+		};
+		A906F17220413FAD009730D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DpassTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DPass.DpassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dpass.app/Dpass";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A906F14820413FAC009730D1 /* Build configuration list for PBXProject "Dpass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A906F16B20413FAD009730D1 /* Debug */,
+				A906F16C20413FAD009730D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A906F16D20413FAD009730D1 /* Build configuration list for PBXNativeTarget "Dpass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A906F16E20413FAD009730D1 /* Debug */,
+				A906F16F20413FAD009730D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A906F17020413FAD009730D1 /* Build configuration list for PBXNativeTarget "DpassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A906F17120413FAD009730D1 /* Debug */,
+				A906F17220413FAD009730D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A906F15820413FAD009730D1 /* Dpass.xcdatamodel */,
+			);
+			currentVersion = A906F15820413FAD009730D1 /* Dpass.xcdatamodel */;
+			path = Dpass.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A906F14520413FAC009730D1 /* Project object */;
+}
