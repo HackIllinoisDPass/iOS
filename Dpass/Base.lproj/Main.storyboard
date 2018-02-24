@@ -127,8 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Scan Confirmation" id="xLU-3j-ZyC"/>
                     <connections>
-                        <outlet property="topBar" destination="LWK-NY-CBE" id="qeL-Wi-sZK"/>
-                        <outlet property="topbar" destination="LWK-NY-CBE" id="Um9-Oa-req"/>
+                        <outlet property="topBar" destination="LWK-NY-CBE" id="eEM-iU-xzS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcl-5I-efX" userLabel="First Responder" sceneMemberID="firstResponder"/>
