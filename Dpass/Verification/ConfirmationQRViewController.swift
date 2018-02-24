@@ -34,7 +34,8 @@ class ConfirmationQRViewController: UIViewController {
     }
     
     func setupQRCode(date: String, lat: String, long: String, publicKey: String) {
-        let dataString = "\(date),\(lat),\(long),\(publicKey)"
+        let realDataString = "\(date),\(lat),\(long),\(publicKey)"
+        let dataString = "\(date),\(publicKey)"
         
         //WILL NEED TO ENCRYPTWITH MY PRIVATE KEY HERE privateKey(dataString)
         

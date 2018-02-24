@@ -99,33 +99,40 @@ class VerificationScannerViewController: UIViewController {
     }
     
     // MARK: - Helper methods
-    // TODO: WILL NEED TO EDIT HERE
     func launchApp(decodedMessage: String) {
         
         if presentedViewController != nil {
             return
         }
         
+        if !decodedMessage.contains(","){
+            invalidQRAlert()
+        }
+        
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        date = String(modifiedMessageArray[0])
-        lat = String(modifiedMessageArray[1])
-        long = String(modifiedMessageArray[2])
-        publicKey = String(modifiedMessageArray[3])
-        
-        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])\nLong: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
-        
-        let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.callCameraSegue()
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        
-        alertPrompt.addAction(confirmAction)
-        alertPrompt.addAction(cancelAction)
-        
-        present(alertPrompt, animated: true, completion: nil)
+        if (modifiedMessageArray.count == 4) {
+            date = String(modifiedMessageArray[0])
+            lat = String(modifiedMessageArray[1])
+            long = String(modifiedMessageArray[2])
+            publicKey = String(modifiedMessageArray[3])
+            
+            let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])\nLong: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
+            
+            let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
+            let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+                self.callCameraSegue()
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+            
+            alertPrompt.addAction(confirmAction)
+            alertPrompt.addAction(cancelAction)
+            
+            present(alertPrompt, animated: true, completion: nil)
+        }else{
+            invalidQRAlert()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,6 +147,17 @@ class VerificationScannerViewController: UIViewController {
     
     func callCameraSegue() {
          performSegue(withIdentifier: "showVerification", sender: self)
+    }
+    
+    func invalidQRAlert() {
+        let alertPrompt = UIAlertController(title: "Could not scan QR code", message: "Invalid QR code", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            print("NOTHING TO DO")
+        })
+        
+        alertPrompt.addAction(action)
+        present(alertPrompt, animated: true, completion: nil)
     }
 }
 

@@ -101,20 +101,34 @@ class ConfirmationScannerViewController: UIViewController {
             return
         }
 
-        let alertPrompt = UIAlertController(title: "Confirm details", message: "Press confirm to complete verification", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            print("PUT DAT STUFF ON DA BLOCK")
-            //DO THE COMPLETED ACTION HERE AKA WRITE TO THE BLOCKCHAIN
-        })
+        if !decodedMessage.contains(","){
+            invalidQRAlert()
+        }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        alertPrompt.addAction(confirmAction)
-        alertPrompt.addAction(cancelAction)
-        
-        present(alertPrompt, animated: true, completion: nil)
+        if (modifiedMessageArray.count == 2) {
+            let encyptedMessage = String(modifiedMessageArray[0])
+            let verifierPublicKey = String(modifiedMessageArray[1])
+            
+            //save the data to the blockchain here!
+            //show user feedback that block was saved.
+            print("Saved!!!")
+        }else{
+            invalidQRAlert()
+        }
     }
     
+    func invalidQRAlert() {
+        let alertPrompt = UIAlertController(title: "Could not scan QR code", message: "Invalid QR code", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            print("NOTHING TO DO")
+        })
+        
+        alertPrompt.addAction(action)
+        present(alertPrompt, animated: true, completion: nil)
+    }
 }
 
 extension ConfirmationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
