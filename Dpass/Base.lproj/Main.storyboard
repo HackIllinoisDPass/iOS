@@ -220,11 +220,52 @@
                     <navigationItem key="navigationItem" title="Verify QR" id="YJ3-aC-bvI"/>
                     <connections>
                         <outlet property="topBar" destination="J1G-6M-3CH" id="7TE-S3-BvS"/>
+                        <segue destination="NO4-Jh-xHF" kind="show" identifier="showVerification" id="GeZ-Yk-c3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTq-Xe-SDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2516" y="716"/>
+        </scene>
+        <!--Confirmation-->
+        <scene sceneID="ZnK-Xr-qdH">
+            <objects>
+                <viewController id="NO4-Jh-xHF" customClass="ConfirmationQRViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r9N-UB-og4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ybY-k3-kug">
+                                <rect key="frame" x="62" y="164" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ybY-k3-kug" secondAttribute="height" multiplier="1:1" id="7vS-x6-25N"/>
+                                    <constraint firstAttribute="width" constant="250" id="EJU-f2-s3q"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instruction Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-mz-RAb">
+                                <rect key="frame" x="128" y="444" width="118.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ybY-k3-kug" firstAttribute="top" secondItem="Gci-Z0-1CS" secondAttribute="top" constant="100" id="ELB-yt-1YA"/>
+                            <constraint firstItem="fO9-mz-RAb" firstAttribute="top" secondItem="ybY-k3-kug" secondAttribute="bottom" constant="30" id="Pld-lI-KdW"/>
+                            <constraint firstItem="fO9-mz-RAb" firstAttribute="centerX" secondItem="Gci-Z0-1CS" secondAttribute="centerX" id="aga-08-dcD"/>
+                            <constraint firstItem="ybY-k3-kug" firstAttribute="centerX" secondItem="Gci-Z0-1CS" secondAttribute="centerX" id="bKV-Ny-zqp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gci-Z0-1CS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Confirmation" id="d0P-Ft-9lb"/>
+                    <connections>
+                        <outlet property="QRImageView" destination="ybY-k3-kug" id="FkI-qN-2Aj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XSF-2m-TnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3454" y="716"/>
         </scene>
         <!--Read-->
         <scene sceneID="1De-sc-1tj">

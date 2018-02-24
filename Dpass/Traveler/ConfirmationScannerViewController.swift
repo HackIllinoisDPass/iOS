@@ -1,5 +1,5 @@
 //
-//  VerificationScannerViewController.swift
+//  ConfirmationScannerViewController.swift
 //  Dpass
 //
 //  Created by Will Mock on 2/24/18.
@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 
-class VerificationScannerViewController: UIViewController {
-
+class ConfirmationScannerViewController: UIViewController {
+    
     @IBOutlet var topBar: UIView!
     
     var captureSession = AVCaptureSession()
@@ -100,14 +100,10 @@ class VerificationScannerViewController: UIViewController {
         if presentedViewController != nil {
             return
         }
-        
-        let modifiedMessageArray = decodedMessage.split(separator: ",")
-        
-        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])Long: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
-        
-        let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
+
+        let alertPrompt = UIAlertController(title: "Confirm details", message: "Press confirm to complete verification", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            
+            print("PUT DAT STUFF ON DA BLOCK")
             //DO THE COMPLETED ACTION HERE AKA WRITE TO THE BLOCKCHAIN
         })
         
@@ -120,8 +116,8 @@ class VerificationScannerViewController: UIViewController {
     }
     
 }
-    
-extension VerificationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+
+extension ConfirmationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.

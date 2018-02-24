@@ -1,5 +1,5 @@
 //
-//  ConfirmationScannerViewController.swift
+//  VerificationScannerViewController.swift
 //  Dpass
 //
 //  Created by Will Mock on 2/24/18.
@@ -9,14 +9,19 @@
 import UIKit
 import AVFoundation
 
-class ConfirmationScannerViewController: UIViewController {
-    
+class VerificationScannerViewController: UIViewController {
+
     @IBOutlet var topBar: UIView!
     
     var captureSession = AVCaptureSession()
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
+    
+    var date: String?
+    var lat: String?
+    var long: String?
+    var publicKey: String?
     
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
@@ -103,12 +108,16 @@ class ConfirmationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])Long: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
-
+        date = String(modifiedMessageArray[0])
+        lat = String(modifiedMessageArray[1])
+        long = String(modifiedMessageArray[2])
+        publicKey = String(modifiedMessageArray[3])
+        
+        let readableMessage = "Date: \(modifiedMessageArray[0])\nLat: \(modifiedMessageArray[1])\nLong: \(modifiedMessageArray[2])\nPublicKey: \(modifiedMessageArray[3])\n"
+        
         let alertPrompt = UIAlertController(title: "Confirm details", message: "\(readableMessage)", preferredStyle: .actionSheet)
         let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            
-            //DO THE COMPLETED ACTION HERE AKA WRITE TO THE BLOCKCHAIN
+            self.callCameraSegue()
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
@@ -119,9 +128,23 @@ class ConfirmationScannerViewController: UIViewController {
         present(alertPrompt, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestViewController: ConfirmationQRViewController = segue.destination as! ConfirmationQRViewController
+        
+        DestViewController.date = date
+        DestViewController.lat = lat
+        DestViewController.long = long
+        DestViewController.publicKey = publicKey
+        
+    }
+    
+    func callCameraSegue() {
+         performSegue(withIdentifier: "showVerification", sender: self)
+    }
 }
 
-extension ConfirmationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+    
+extension VerificationScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
