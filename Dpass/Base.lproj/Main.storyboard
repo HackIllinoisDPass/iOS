@@ -172,7 +172,7 @@
             </objects>
             <point key="canvasLocation" x="697" y="22"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Scan-->
         <scene sceneID="8cU-iS-eKC">
             <objects>
                 <tableViewController id="7ue-v8-h3j" sceneMemberID="viewController">
@@ -195,13 +195,36 @@
                             <outlet property="delegate" destination="7ue-v8-h3j" id="7uQ-s7-ddr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="dPe-sS-ZN8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="2AK-cc-sNi"/>
+                    <navigationItem key="navigationItem" title="Scan" id="dPe-sS-ZN8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="2AK-cc-sNi">
+                            <connections>
+                                <segue destination="NqH-NM-k2M" kind="show" id="Ka3-Kf-bMf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmx-hX-rJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1633" y="716"/>
+        </scene>
+        <!--Verify QR-->
+        <scene sceneID="M9C-XM-1HC">
+            <objects>
+                <viewController id="NqH-NM-k2M" customClass="VerificationScannerViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J1G-6M-3CH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ovu-UY-BZn"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Verify QR" id="YJ3-aC-bvI"/>
+                    <connections>
+                        <outlet property="topBar" destination="J1G-6M-3CH" id="7TE-S3-BvS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTq-Xe-SDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2516" y="716"/>
         </scene>
         <!--Read-->
         <scene sceneID="1De-sc-1tj">
