@@ -23,8 +23,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var longArray: [Double] = []
     var locationTitle: [String] = []
     var time: [String] = []
-    
+    var pins = [Pin]()
     let client = DPassEventsClient()
+    var coords = [CLLocationCoordinate2D]()
+    var initialCoordinate = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,20 +72,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     //self.locationTitle.append(event)JEREMY FIX THIS
                     
                 }
-                
-                let tempCoordinate = CLLocationCoordinate2DMake(self.latArray.last!, self.longArray.last!)
-                let span = MKCoordinateSpanMake(0.05, 0.05)
-                let region = MKCoordinateRegionMake(tempCoordinate, span)
-                
-                self.mapView.setRegion(region, animated: true)
+                if(self.latArray.count == 0){
+                    self.initialCoordinate = CLLocationCoordinate2D(latitude: 40.1106, longitude: -88.2073)
+                } else {
+                    self.initialCoordinate = CLLocationCoordinate2D(latitude: self.latArray.last!, longitude: self.longArray.last!)
+                }
+
+                self.mapView.setCenter(self.initialCoordinate, animated: true)
+                self.mapView.delegate = self
                 
                 for element in 0..<self.latArray.count {
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = tempCoordinate
-                    annotation.title = "TEMP"//self.locationTitle[element]
-                    annotation.subtitle = self.time[element]
-                    self.mapView.addAnnotation(annotation)
+//                    let annotation = MKPointAnnotation()
+//                    annotation.coordinate = initialCoordinate
+//                    annotation.title = "TEMP"//self.locationTitle[element]
+//                    annotation.subtitle = self.time[element]
+//                    self.mapView.addAnnotation(annotation)
+                    let tempPin = Pin(title: self.locationTitle[element], dateTime: self.time[element], coordinate: CLLocationCoordinate2D(latitude: self.latArray[element], longitude: self.longArray[element]))
+                    self.pins.append(tempPin)
+                    self.coords.append(CLLocationCoordinate2D(latitude: self.latArray[element], longitude: self.longArray[element]))
                 }
+                if(self.coords.count == 0) {
+                    self.coords.append(CLLocationCoordinate2D(latitude: 40.1106, longitude: -88.2073))
+                }
+                let testline = MKPolyline(coordinates: self.coords, count: self.coords.count)
+                print(self.coords.count)
+                self.mapView.add(testline)
+                self.mapView.region = MKCoordinateRegion(center: self.coords[0], span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+                
+                self.mapView.addAnnotations(self.pins)
             case .failure(let error):
                 print("the error \(error)")
             }
@@ -93,41 +109,28 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    //Called when the annotation was added
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.animatesDrop = true
-            pinView?.canShowCallout = true
-            pinView?.isDraggable = false
-            pinView?.pinTintColor = .red
-            
-            let rightButton: AnyObject! = UIButton(type: UIButtonType.detailDisclosure)
-            pinView?.rightCalloutAccessoryView = rightButton as? UIView
-        }
-        else {
-            pinView?.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print(#function)
-        if control == view.rightCalloutAccessoryView {
-            performSegue(withIdentifier: "toTheMoon", sender: self)
-        }
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-        if newState == MKAnnotationViewDragState.ending {
-            let droppedAt = view.annotation?.coordinate
-            print(droppedAt ?? "coordicate is nil")
-        }
-    }
+}
 
+extension MapViewController {
+    // 1
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // 2
+        guard let annotation = annotation as? Pin else { return nil }
+        // 3
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        // 4
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            // 5
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
+    }
 }
