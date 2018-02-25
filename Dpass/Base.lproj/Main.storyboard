@@ -55,6 +55,7 @@
                     </view>
                     <connections>
                         <outlet property="textField" destination="zEG-h7-7As" id="NIu-gu-rIf"/>
+                        <segue destination="Sdl-gT-QKy" kind="show" identifier="showMainView" id="uAy-dy-h9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z01-rw-pTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,6 +208,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ddR-q4-ah5"/>
                     <connections>
+                        <outlet property="iconImage" destination="bIa-lo-LY1" id="Da8-ce-bqb"/>
+                        <outlet property="leftLabel" destination="7m0-No-GQR" id="kmx-xX-Agh"/>
+                        <outlet property="rightLabel" destination="kSQ-gl-hnk" id="ZSF-6M-5iY"/>
+                        <outlet property="tableView" destination="dXP-7o-7ie" id="mSL-UU-x05"/>
                         <outlet property="titleBarTitle" destination="ddR-q4-ah5" id="ruI-ZQ-qJX"/>
                     </connections>
                 </viewController>

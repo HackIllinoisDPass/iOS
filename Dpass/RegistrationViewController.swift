@@ -48,20 +48,21 @@ class RegistrationViewController: UIViewController {
                 ownerEntity.privateKey = resultObject.privateKey
                 PersistentService.saveContext()
                 
-                print("success is \(dPassRegistrationResult)")
-                
-                //save core data object here
+                print("success")
                 
                 preferences.set(true, forKey: "registeredUser")
-                //self.showSuccessfulUserRegistrationAlert()
+                
+                self.callShowMainViewSegue()
+                
             case .failure(let error):
                 print("the error \(error)")
                 preferences.set(false, forKey: "registeredUser")
             }
         }
-        
-        //DO saving to coredata here. need to also retrieve wallet address to store into coredata
-        
+    }
+    
+    func callShowMainViewSegue() {
+        performSegue(withIdentifier: "showMainView", sender: self)
     }
     
     override func viewDidLoad() {

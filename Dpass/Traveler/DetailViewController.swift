@@ -11,6 +11,10 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet var titleBarTitle: UINavigationItem!
+    @IBOutlet var iconImage: UIImageView!
+    @IBOutlet var leftLabel: UILabel!
+    @IBOutlet var rightLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

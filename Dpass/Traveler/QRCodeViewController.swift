@@ -23,9 +23,6 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -64,7 +61,7 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
             return
         }
         
-        let dataString = "\(currTime.toString(dateFormat: "dd-MMM-yyyy")),\(location),\(publicKey),\(name)"
+        let dataString = "\(currTime.toString(dateFormat: "dd-MM-yyyy")),\(location),\(publicKey),\(name)"
         print(dataString)
         
         let data = dataString.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)

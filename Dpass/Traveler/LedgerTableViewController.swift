@@ -16,7 +16,7 @@ struct Event{
     var dateTime: String?
 }
 
-class LedgerTableViewController: UITableViewController {
+class LedgerTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
     var location: CLLocation?
@@ -29,6 +29,8 @@ class LedgerTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.locationManager.requestWhenInUseAuthorization()
         
         //Will need to call this on all returned values
         //convertToGeoCode(lat: tempLat, long: tempLong)
