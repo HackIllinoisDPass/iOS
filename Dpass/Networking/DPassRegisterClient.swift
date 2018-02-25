@@ -31,4 +31,19 @@ class DPassRegisterClient: APIClient {
             return dPassRegistrationResult
         }, completion: completion)
     }
+    
+    func getEvents(from DPassAPIType: DPassAPI, address: String, sender: String, completion: @escaping (Result<DPassGetEventsResult?, APIError>) -> Void) {
+        
+        var request = DPassAPIType.request
+        
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let postString = "address=\(address)&sender=\(sender)"
+        request.httpBody = postString.data(using: .utf8)
+        
+        fetch(with: request, decode: {json -> DPassGetEventsResult? in
+            guard let dPassGetEventsResult = json as? DPassGetEventsResult else { return  nil }
+            return dPassGetEventsResult
+        }, completion: completion)
+    }
 }

@@ -11,6 +11,7 @@ import Foundation
 //These will change the URl string that is created in Endpoint
 enum DPassAPI {
     case register
+    case getevents
 }
 
 //This extention to API will add functionality and conform to Enpoint
@@ -20,13 +21,14 @@ extension DPassAPI: Endpoint {
     //The base string for the reactor api
     //For another class the base string could be
     var base: String {
-        return "http://52.170.113.111:3000"
+        return "https://1f9d3104.ngrok.io"
     }
     
     //This checks to see what case of the enum is selected and finishes building the URL from it
     var path: String { //Computed property  for the path, this is why these are cool as hell
         switch self {
         case .register: return "/createwallet"
+        case .getevents: return "/getevents"
         }
     }
 }

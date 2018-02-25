@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 struct Event{
     var city: String?
@@ -27,10 +28,40 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
     var geoLocationArray: [Event] = []
     var cellTitle: String?
     
+    let client = DPassEventsClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.locationManager.requestWhenInUseAuthorization()
+        
+        var name: String
+        var publicKey: String
+        let sender = "true"
+        
+        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+        do {
+            let owner = try PersistentService.context.fetch(fetchRequest)
+            
+            name = owner[0].name!
+            publicKey = owner[0].publicKey!
+        } catch{
+            print("failed getting name")
+            return
+        }
+        
+        client.getEvents(from: .getevents, address: publicKey, sender: sender){ result in
+            switch result {
+            case .success(let dPassGetAllResults):
+                guard let resultObject = dPassGetAllResults else {
+                    print("There was an error")
+                    return
+                }
+                print("success is \(resultObject)")
+            case .failure(let error):
+                print("the error \(error)")
+            }
+        }
         
         //Will need to call this on all returned values
         //convertToGeoCode(lat: tempLat, long: tempLong)

@@ -15,6 +15,7 @@ enum APIError: APIResponse, Error {
     case responseUnsuccessful
     case jsonParsingFailure
     case usernameUnavailable
+    
     var localizedDescription: String {
         switch self {
         case .requestFailed: return "Request Failed"

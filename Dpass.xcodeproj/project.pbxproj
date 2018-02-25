@@ -40,6 +40,8 @@
 		A906F1C420424D9C009730D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F1C320424D9C009730D1 /* Security.framework */; };
 		A906F1C820424E8D009730D1 /* RSAWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C720424E8D009730D1 /* RSAWrapper.swift */; };
 		A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C9204258BE009730D1 /* MapViewController.swift */; };
+		A906F1CE2042710F009730D1 /* DPassGetEventsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */; };
+		A906F1D0204273E7009730D1 /* DPassEventsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1CF204273E7009730D1 /* DPassEventsClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		A906F1C320424D9C009730D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A906F1C720424E8D009730D1 /* RSAWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAWrapper.swift; sourceTree = "<group>"; };
 		A906F1C9204258BE009730D1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassGetEventsResult.swift; sourceTree = "<group>"; };
+		A906F1CF204273E7009730D1 /* DPassEventsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassEventsClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,7 @@
 				A906F1AD20421CAB009730D1 /* Endpoint.swift */,
 				A906F1BC20421D5C009730D1 /* DPassAPI.swift */,
 				A906F1BE20421E2A009730D1 /* DPassRegisterClient.swift */,
+				A906F1CF204273E7009730D1 /* DPassEventsClient.swift */,
 				A906F1B020421CAB009730D1 /* Result.swift */,
 			);
 			path = Networking;
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				A906F1C0204223F7009730D1 /* DPassRegistrationResult.swift */,
+				A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				A906F1B520421CAC009730D1 /* APIClient.swift in Sources */,
 				A906F18B20420C7C009730D1 /* PersistentService.swift in Sources */,
 				A906F1BF20421E2A009730D1 /* DPassRegisterClient.swift in Sources */,
+				A906F1D0204273E7009730D1 /* DPassEventsClient.swift in Sources */,
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
 				A906F1BA20421CAC009730D1 /* APISuccess.swift in Sources */,
 				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
@@ -368,6 +375,7 @@
 				A906F17F2041A81A009730D1 /* VerificationScannerViewController.swift in Sources */,
 				A906F19320420F1D009730D1 /* Owner+CoreDataClass.swift in Sources */,
 				A906F19220420F1D009730D1 /* User+CoreDataProperties.swift in Sources */,
+				A906F1CE2042710F009730D1 /* DPassGetEventsResult.swift in Sources */,
 				A906F1812041AC30009730D1 /* ConfirmationQRViewController.swift in Sources */,
 				A906F1B920421CAC009730D1 /* Result.swift in Sources */,
 				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
