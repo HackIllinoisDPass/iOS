@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: UserDefaults.standard.bool(forKey: "registeredUser") ? "MainView" : "AccountCreationView")
+        /*let rootViewController = storyboard.instantiateViewController(withIdentifier: UserDefaults.standard.bool(forKey: "registeredUser") ? "MainView" : "AccountCreationView")*/
+        let rootViewController = storyboard.instantiateViewController(withIdentifier:"MainView")
         
         window?.rootViewController = rootViewController
         

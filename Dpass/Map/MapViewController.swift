@@ -12,7 +12,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
-// Going to need to convert these strings into
+    // Going to need to convert these strings into
     var lat: String?
     var long: String?
     
