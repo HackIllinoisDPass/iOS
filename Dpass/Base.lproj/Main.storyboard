@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sdl-gT-QKy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6I0-LM-IVm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Registration View Controller-->
+        <scene sceneID="zun-qp-xoz">
+            <objects>
+                <viewController storyboardIdentifier="AccountCreationView" id="6I0-LM-IVm" customClass="RegistrationViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekI-nY-ADl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNl-UZ-tel">
+                                <rect key="frame" x="144" y="328.5" width="86" height="30"/>
+                                <state key="normal" title="Get Account"/>
+                                <connections>
+                                    <action selector="registerButton:" destination="6I0-LM-IVm" eventType="touchUpInside" id="nMm-Qc-jsn"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Last" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEG-h7-7As">
+                                <rect key="frame" x="100" y="280" width="175" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter legal first and last name to register for your DPass Account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl8-YK-jg0">
+                                <rect key="frame" x="20" y="189" width="335" height="41"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zEG-h7-7As" firstAttribute="centerX" secondItem="MUa-VZ-2Sq" secondAttribute="centerX" id="1gy-Am-Jsm"/>
+                            <constraint firstItem="zEG-h7-7As" firstAttribute="leading" secondItem="MUa-VZ-2Sq" secondAttribute="leading" constant="100" id="Bss-tZ-6PR"/>
+                            <constraint firstItem="eNl-UZ-tel" firstAttribute="centerX" secondItem="MUa-VZ-2Sq" secondAttribute="centerX" id="ERI-VM-q53"/>
+                            <constraint firstItem="Xl8-YK-jg0" firstAttribute="leading" secondItem="ekI-nY-ADl" secondAttribute="leading" constant="20" id="KMO-y0-Bxy"/>
+                            <constraint firstItem="eNl-UZ-tel" firstAttribute="centerY" secondItem="MUa-VZ-2Sq" secondAttribute="centerY" id="N8P-js-C1T"/>
+                            <constraint firstItem="zEG-h7-7As" firstAttribute="top" secondItem="Xl8-YK-jg0" secondAttribute="bottom" constant="50" id="hE1-WX-Avm"/>
+                            <constraint firstItem="MUa-VZ-2Sq" firstAttribute="trailing" secondItem="zEG-h7-7As" secondAttribute="trailing" constant="100" id="hi9-cm-UEF"/>
+                            <constraint firstItem="eNl-UZ-tel" firstAttribute="top" secondItem="zEG-h7-7As" secondAttribute="bottom" constant="18.5" id="oIg-MG-AiL"/>
+                            <constraint firstAttribute="trailing" secondItem="Xl8-YK-jg0" secondAttribute="trailing" constant="20" id="pGS-eF-12p"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MUa-VZ-2Sq"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="zEG-h7-7As" id="NIu-gu-rIf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z01-rw-pTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-258.39999999999998" y="-594.15292353823088"/>
+        </scene>
         <!--Ledger-->
         <scene sceneID="UQp-t8-1o5">
             <objects>
@@ -169,7 +219,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9A3-qP-vK4">
             <objects>
-                <tabBarController id="Sdl-gT-QKy" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainView" id="Sdl-gT-QKy" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ffR-pd-qYJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
