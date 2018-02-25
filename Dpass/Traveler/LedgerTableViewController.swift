@@ -24,15 +24,14 @@ class LedgerTableViewController: UITableViewController {
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
     
-    let tempLat = "40.1142726739917"
-    let tempLong = "-88.2254133647812"
-    
     var geoLocationArray: [Event] = []
     var cellTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        convertToGeoCode(lat: tempLat, long: tempLong)
+        
+        //Will need to call this on all returned values
+        //convertToGeoCode(lat: tempLat, long: tempLong)
         
         tableView.reloadData()
     }

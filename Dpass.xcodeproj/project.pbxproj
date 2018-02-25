@@ -39,6 +39,7 @@
 		A906F1C1204223F7009730D1 /* DPassRegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C0204223F7009730D1 /* DPassRegistrationResult.swift */; };
 		A906F1C420424D9C009730D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A906F1C320424D9C009730D1 /* Security.framework */; };
 		A906F1C820424E8D009730D1 /* RSAWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C720424E8D009730D1 /* RSAWrapper.swift */; };
+		A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C9204258BE009730D1 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		A906F1C0204223F7009730D1 /* DPassRegistrationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassRegistrationResult.swift; sourceTree = "<group>"; };
 		A906F1C320424D9C009730D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A906F1C720424E8D009730D1 /* RSAWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAWrapper.swift; sourceTree = "<group>"; };
+		A906F1C9204258BE009730D1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A906F17B20416897009730D1 /* MapKit.framework in Frameworks */,
 				A906F1C420424D9C009730D1 /* Security.framework in Frameworks */,
 				A906F17D2041689F009730D1 /* CoreLocation.framework in Frameworks */,
-				A906F17B20416897009730D1 /* MapKit.framework in Frameworks */,
 				A906F17520415A8A009730D1 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,11 +143,12 @@
 				A906F1952042189B009730D1 /* RegistrationViewController.swift */,
 				A906F18A20420C7C009730D1 /* PersistentService.swift */,
 				A906F15420413FAD009730D1 /* Main.storyboard */,
+				A906F1CC204258CB009730D1 /* Security */,
+				A906F1CB204258C4009730D1 /* Map */,
 				A906F15A20413FAD009730D1 /* Assets.xcassets */,
 				A906F15C20413FAD009730D1 /* LaunchScreen.storyboard */,
 				A906F15F20413FAD009730D1 /* Info.plist */,
 				A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */,
-				A906F1C720424E8D009730D1 /* RSAWrapper.swift */,
 				A906F1832041B3A7009730D1 /* Traveler */,
 				A906F1822041B301009730D1 /* Verification */,
 			);
@@ -224,6 +227,22 @@
 				A906F1C0204223F7009730D1 /* DPassRegistrationResult.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A906F1CB204258C4009730D1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A906F1C9204258BE009730D1 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		A906F1CC204258CB009730D1 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				A906F1C720424E8D009730D1 /* RSAWrapper.swift */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +356,7 @@
 				A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */,
 				A906F1BA20421CAC009730D1 /* APISuccess.swift in Sources */,
 				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
+				A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */,
 				A906F1962042189B009730D1 /* RegistrationViewController.swift in Sources */,
 				A906F1B420421CAC009730D1 /* APIResponse.swift in Sources */,
 				A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */,
