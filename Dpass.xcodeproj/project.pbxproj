@@ -45,6 +45,7 @@
 		A906F1D42042926C009730D1 /* DPassGetObjectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D32042926C009730D1 /* DPassGetObjectResult.swift */; };
 		A906F1D62042AC8C009730D1 /* DPassContractResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D52042AC8C009730D1 /* DPassContractResult.swift */; };
 		A906F1D82042ACDB009730D1 /* DPassContractClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D72042ACDB009730D1 /* DPassContractClient.swift */; };
+		A906F1DA2042CC84009730D1 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D92042CC84009730D1 /* HistoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		A906F1D32042926C009730D1 /* DPassGetObjectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassGetObjectResult.swift; sourceTree = "<group>"; };
 		A906F1D52042AC8C009730D1 /* DPassContractResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassContractResult.swift; sourceTree = "<group>"; };
 		A906F1D72042ACDB009730D1 /* DPassContractClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassContractClient.swift; sourceTree = "<group>"; };
+		A906F1D92042CC84009730D1 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A906F17E2041A81A009730D1 /* VerificationScannerViewController.swift */,
+				A906F1D92042CC84009730D1 /* HistoryTableViewController.swift */,
 				A906F1802041AC30009730D1 /* ConfirmationQRViewController.swift */,
 			);
 			path = Verification;
@@ -379,6 +382,7 @@
 				A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */,
 				A906F19120420F1D009730D1 /* User+CoreDataClass.swift in Sources */,
 				A906F179204162AE009730D1 /* QRCodeViewController.swift in Sources */,
+				A906F1DA2042CC84009730D1 /* HistoryTableViewController.swift in Sources */,
 				A906F1B620421CAC009730D1 /* Endpoint.swift in Sources */,
 				A906F1B320421CAC009730D1 /* APIError.swift in Sources */,
 				A906F1C820424E8D009730D1 /* RSAWrapper.swift in Sources */,

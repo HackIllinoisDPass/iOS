@@ -86,7 +86,7 @@ class RSAWrapper {
         }
         
         let mudata = NSData(bytes: &cipherBuffer, length: cipherBufferSize)
-        return mudata.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
+        return mudata.base64EncodedString()
     }
     
     func decpryptBase64(encrpted: String) -> String? {

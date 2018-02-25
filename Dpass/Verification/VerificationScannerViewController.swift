@@ -157,7 +157,7 @@ class VerificationScannerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let DestViewController: ConfirmationQRViewController = segue.destination as! ConfirmationQRViewController
+        let DestViewController: HistoryTableViewController = segue.destination as! HistoryTableViewController
         
         DestViewController.date = date
         DestViewController.lat = lat
@@ -167,7 +167,7 @@ class VerificationScannerViewController: UIViewController {
     }
     
     func callCameraSegue() {
-        performSegue(withIdentifier: "showVerification", sender: self)
+        performSegue(withIdentifier: "showHistory", sender: self)
     }
     
     func invalidQRAlert() {

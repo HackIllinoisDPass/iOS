@@ -65,6 +65,8 @@ class ConfirmationQRViewController: UIViewController {
         
         let encryption = rsa?.encryptBase64(text: encryptString)
         
+        //print(encryption)
+        
         let decription = rsa?.decpryptBase64(encrpted: encryption!)
         
          //use the private key on this string

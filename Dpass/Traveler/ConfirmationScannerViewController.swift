@@ -147,12 +147,6 @@ class ConfirmationScannerViewController: UIViewController {
             
             let client = DPassContractClient()
             
-            print(myPrivateKey)
-            print(verifierPublicKey)
-            print(locationiFinal)
-            print(dateTime)
-            print(encyptedMessage)
-            
             client.createContract(from: .fillcontract, priv: myPrivateKey, signer: verifierPublicKey, location: locationiFinal, time: dateTime, encData: encyptedMessage, completion: { _ in
                 return
             })

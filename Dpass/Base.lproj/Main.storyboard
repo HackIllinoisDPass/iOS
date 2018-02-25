@@ -335,10 +335,10 @@
             </objects>
             <point key="canvasLocation" x="697" y="22"/>
         </scene>
-        <!--Scan-->
+        <!--History-->
         <scene sceneID="8cU-iS-eKC">
             <objects>
-                <tableViewController id="7ue-v8-h3j" sceneMemberID="viewController">
+                <tableViewController id="7ue-v8-h3j" customClass="HistoryTableViewController" customModule="Dpass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHe-Np-hE4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,17 +358,17 @@
                             <outlet property="delegate" destination="7ue-v8-h3j" id="7uQ-s7-ddr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Scan" id="dPe-sS-ZN8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="2AK-cc-sNi">
+                    <navigationItem key="navigationItem" title="History" id="dPe-sS-ZN8">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Tdh-U2-RLe">
                             <connections>
-                                <segue destination="NqH-NM-k2M" kind="show" id="Ka3-Kf-bMf"/>
+                                <segue destination="NO4-Jh-xHF" kind="show" id="Q3h-uw-MyO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmx-hX-rJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="716"/>
+            <point key="canvasLocation" x="2516" y="716"/>
         </scene>
         <!--Verify QR-->
         <scene sceneID="M9C-XM-1HC">
@@ -383,12 +383,12 @@
                     <navigationItem key="navigationItem" title="Verify QR" id="YJ3-aC-bvI"/>
                     <connections>
                         <outlet property="topBar" destination="J1G-6M-3CH" id="7TE-S3-BvS"/>
-                        <segue destination="NO4-Jh-xHF" kind="show" identifier="showVerification" id="GeZ-Yk-c3L"/>
+                        <segue destination="7ue-v8-h3j" kind="show" identifier="showHistory" id="Kxs-77-uSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTq-Xe-SDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="716"/>
+            <point key="canvasLocation" x="1633" y="716"/>
         </scene>
         <!--Confirmation-->
         <scene sceneID="ZnK-Xr-qdH">
@@ -446,7 +446,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="7ue-v8-h3j" kind="relationship" relationship="rootViewController" id="7NF-g1-ueU"/>
+                        <segue destination="NqH-NM-k2M" kind="relationship" relationship="rootViewController" id="Myt-Ru-TXs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lv4-0N-vYS" userLabel="First Responder" sceneMemberID="firstResponder"/>

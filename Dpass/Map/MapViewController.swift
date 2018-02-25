@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
@@ -16,28 +17,73 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var lat: String?
     var long: String?
     
-    let latArray = [37.331652997806785]
-    let longArray = [-122.03072304117417]
+    //let latArray = [37.331652997806785]
+    //let longArray = [-122.03072304117417]
+    var latArray: [Double] = []
+    var longArray: [Double] = []
     let tempLocationTitle = "TEMP NAME"
     let time = ["dd-MM-yyyy", "temp"]
+    
+    let client = DPassEventsClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tempCoordinate = CLLocationCoordinate2DMake(latArray.last!, longArray.last!)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(tempCoordinate, span)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        latArray = []
+        longArray = []
         
-        mapView.setRegion(region, animated: true)
+        var publicKey: String?
+        let sender = "true"
         
-        for element in 0...latArray.count {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = tempCoordinate
-            annotation.title = tempLocationTitle
-            annotation.subtitle = time[element]
-            self.mapView.addAnnotation(annotation)
+        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+        do {
+            let owner = try PersistentService.context.fetch(fetchRequest)
+            publicKey = owner[0].publicKey
+        } catch{
+            print("failed getting name")
+            return
         }
         
+        guard let key = publicKey else{
+            return
+        }
+        
+        client.getEvents(from: .getevents, address: key, sender: sender){ result in
+            switch result {
+            case .success(let dPassGetAllResults):
+                guard let resultObject = dPassGetAllResults else {
+                    print("There was an error")
+                    return
+                }
+                
+                for event in resultObject.events!{
+                    let locationArray = event.loc?.split(separator: ",")
+                    let latString = String(locationArray![0])
+                    let longString = String(locationArray![1])
+                    self.latArray.append(Double(latString)!)
+                    self.longArray.append(Double(longString)!)
+                }
+                
+                let tempCoordinate = CLLocationCoordinate2DMake(self.latArray.last!, self.longArray.last!)
+                let span = MKCoordinateSpanMake(0.05, 0.05)
+                let region = MKCoordinateRegionMake(tempCoordinate, span)
+                
+                self.mapView.setRegion(region, animated: true)
+                
+                for element in 0...self.latArray.count {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = tempCoordinate
+                    annotation.title = self.tempLocationTitle
+                    annotation.subtitle = self.time[element]
+                    self.mapView.addAnnotation(annotation)
+                }
+            case .failure(let error):
+                print("the error \(error)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

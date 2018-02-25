@@ -42,26 +42,26 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.locationManager.requestWhenInUseAuthorization()
         
-        var name: String?
+        geoLocationArray = []
+        
         var publicKey: String?
         let sender = "true"
         
         let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
         do {
             let owner = try PersistentService.context.fetch(fetchRequest)
-            
-            name = owner[0].name
             publicKey = owner[0].publicKey
-            print(publicKey)
         } catch{
             print("failed getting name")
             return
         }
         
         guard let key = publicKey else{
-            print("TEST")
             return
         }
         
@@ -72,7 +72,6 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
                     print("There was an error")
                     return
                 }
-                print("success is \(resultObject)")
                 
                 for event in resultObject.events!{
                     let locationArray = event.loc?.split(separator: ",")
@@ -85,10 +84,6 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
                 print("the error \(error)")
             }
         }
-        
-        //Will need to call this on all returned values
-        //convertToGeoCode(lat: tempLat, long: tempLong)
-        
         tableView.reloadData()
     }
 

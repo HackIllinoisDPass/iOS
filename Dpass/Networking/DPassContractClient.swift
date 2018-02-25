@@ -29,7 +29,7 @@ class DPassContractClient: APIClient {
         let postString = "{\"sender\":\"\(priv)\",\"signer\":\"\(signer)\",\"location\":\"\(location)\",\"time\":\"\(time)\",\"encData\":\"\(encData)\"}"
         request.httpBody = postString.data(using: .utf8)
         
-        print(postString)
+        //print(postString)
         
         fetch(with: request, completion: completion)
     }
