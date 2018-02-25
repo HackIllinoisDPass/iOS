@@ -42,6 +42,9 @@
 		A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1C9204258BE009730D1 /* MapViewController.swift */; };
 		A906F1CE2042710F009730D1 /* DPassGetEventsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */; };
 		A906F1D0204273E7009730D1 /* DPassEventsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1CF204273E7009730D1 /* DPassEventsClient.swift */; };
+		A906F1D42042926C009730D1 /* DPassGetObjectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D32042926C009730D1 /* DPassGetObjectResult.swift */; };
+		A906F1D62042AC8C009730D1 /* DPassContractResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D52042AC8C009730D1 /* DPassContractResult.swift */; };
+		A906F1D82042ACDB009730D1 /* DPassContractClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F1D72042ACDB009730D1 /* DPassContractClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,9 @@
 		A906F1C9204258BE009730D1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassGetEventsResult.swift; sourceTree = "<group>"; };
 		A906F1CF204273E7009730D1 /* DPassEventsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassEventsClient.swift; sourceTree = "<group>"; };
+		A906F1D32042926C009730D1 /* DPassGetObjectResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassGetObjectResult.swift; sourceTree = "<group>"; };
+		A906F1D52042AC8C009730D1 /* DPassContractResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassContractResult.swift; sourceTree = "<group>"; };
+		A906F1D72042ACDB009730D1 /* DPassContractClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPassContractClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +227,7 @@
 				A906F1BC20421D5C009730D1 /* DPassAPI.swift */,
 				A906F1BE20421E2A009730D1 /* DPassRegisterClient.swift */,
 				A906F1CF204273E7009730D1 /* DPassEventsClient.swift */,
+				A906F1D72042ACDB009730D1 /* DPassContractClient.swift */,
 				A906F1B020421CAB009730D1 /* Result.swift */,
 			);
 			path = Networking;
@@ -231,6 +238,8 @@
 			children = (
 				A906F1C0204223F7009730D1 /* DPassRegistrationResult.swift */,
 				A906F1CD2042710F009730D1 /* DPassGetEventsResult.swift */,
+				A906F1D32042926C009730D1 /* DPassGetObjectResult.swift */,
+				A906F1D52042AC8C009730D1 /* DPassContractResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -366,18 +375,21 @@
 				A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */,
 				A906F1962042189B009730D1 /* RegistrationViewController.swift in Sources */,
 				A906F1B420421CAC009730D1 /* APIResponse.swift in Sources */,
+				A906F1D82042ACDB009730D1 /* DPassContractClient.swift in Sources */,
 				A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */,
 				A906F19120420F1D009730D1 /* User+CoreDataClass.swift in Sources */,
 				A906F179204162AE009730D1 /* QRCodeViewController.swift in Sources */,
 				A906F1B620421CAC009730D1 /* Endpoint.swift in Sources */,
 				A906F1B320421CAC009730D1 /* APIError.swift in Sources */,
 				A906F1C820424E8D009730D1 /* RSAWrapper.swift in Sources */,
+				A906F1D42042926C009730D1 /* DPassGetObjectResult.swift in Sources */,
 				A906F17F2041A81A009730D1 /* VerificationScannerViewController.swift in Sources */,
 				A906F19320420F1D009730D1 /* Owner+CoreDataClass.swift in Sources */,
 				A906F19220420F1D009730D1 /* User+CoreDataProperties.swift in Sources */,
 				A906F1CE2042710F009730D1 /* DPassGetEventsResult.swift in Sources */,
 				A906F1812041AC30009730D1 /* ConfirmationQRViewController.swift in Sources */,
 				A906F1B920421CAC009730D1 /* Result.swift in Sources */,
+				A906F1D62042AC8C009730D1 /* DPassContractResult.swift in Sources */,
 				A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */,
 				A906F1BD20421D5C009730D1 /* DPassAPI.swift in Sources */,
 				A906F18920420762009730D1 /* DetailViewController.swift in Sources */,

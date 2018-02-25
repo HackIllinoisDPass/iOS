@@ -14,13 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let rootViewController = storyboard.instantiateViewController(withIdentifier: UserDefaults.standard.bool(forKey: "registeredUser") ? "MainView" : "AccountCreationView")
-        //let rootViewController = storyboard.instantiateViewController(withIdentifier:"MainView")
         
         window?.rootViewController = rootViewController
         

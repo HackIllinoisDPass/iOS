@@ -15,6 +15,9 @@ struct Event{
     var country: String?
     var countryShortName: String?
     var dateTime: String?
+    var sender: String?
+    var signer: String?
+    var data: String?
 }
 
 class LedgerTableViewController: UITableViewController, CLLocationManagerDelegate {
@@ -22,11 +25,17 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
     let locationManager = CLLocationManager()
     var location: CLLocation?
     
+    var dateTime: String?
+    var sender: String?
+    var signer: String?
+    var data: String?
+    
     let geocoder = CLGeocoder()
     var placemark: CLPlacemark?
     
     var geoLocationArray: [Event] = []
     var cellTitle: String?
+    var cellNumber = 0
     
     let client = DPassEventsClient()
     
@@ -35,22 +44,28 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         
         self.locationManager.requestWhenInUseAuthorization()
         
-        var name: String
-        var publicKey: String
+        var name: String?
+        var publicKey: String?
         let sender = "true"
         
         let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
         do {
             let owner = try PersistentService.context.fetch(fetchRequest)
             
-            name = owner[0].name!
-            publicKey = owner[0].publicKey!
+            name = owner[0].name
+            publicKey = owner[0].publicKey
+            print(publicKey)
         } catch{
             print("failed getting name")
             return
         }
         
-        client.getEvents(from: .getevents, address: publicKey, sender: sender){ result in
+        guard let key = publicKey else{
+            print("TEST")
+            return
+        }
+        
+        client.getEvents(from: .getevents, address: key, sender: sender){ result in
             switch result {
             case .success(let dPassGetAllResults):
                 guard let resultObject = dPassGetAllResults else {
@@ -58,6 +73,14 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
                     return
                 }
                 print("success is \(resultObject)")
+                
+                for event in resultObject.events!{
+                    let locationArray = event.loc?.split(separator: ",")
+                    let lat = String(locationArray![0])
+                    let long = String(locationArray![1])
+                    
+                    self.convertToGeoCode(lat: lat, long: long, time: event.time, sender: event._sender, signer: event._signer, data: event.encData)
+                }
             case .failure(let error):
                 print("the error \(error)")
             }
@@ -88,23 +111,32 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         
         cell.textLabel?.text = "\(city), \(countrySN)"
         
-        cell.detailTextLabel?.text = "DATETIME HERE"
+        cell.detailTextLabel?.text = geoLocationArray[indexPath.row].dateTime
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        cellNumber = indexPath.row
         performSegue(withIdentifier: "showLedgerDetail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLedgerDetail", let destinationVC = segue.destination as? DetailViewController, let cellTitle = cellTitle {
                 destinationVC.title = cellTitle
-            }
+                destinationVC.city = geoLocationArray[cellNumber].city
+                destinationVC.country = geoLocationArray[cellNumber].country
+                destinationVC.countryShortName = geoLocationArray[cellNumber].countryShortName
+                destinationVC.data = geoLocationArray[cellNumber].data
+                destinationVC.dateTime = geoLocationArray[cellNumber].dateTime
+                destinationVC.sender = geoLocationArray[cellNumber].sender
+                destinationVC.signer = geoLocationArray[cellNumber].signer
+            
+        }
     }
     
-    func convertToGeoCode(lat: String?, long: String?){
+    func convertToGeoCode(lat: String?, long: String?, time: String?, sender: String?, signer: String?, data: String?){
         
         guard let lat = lat, let long = long else{
             return
@@ -117,6 +149,11 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         let convertedLong = CLLocationDegrees(filledLong!)
         
         location = CLLocation(latitude: convertedLat, longitude: convertedLong)
+        
+        self.dateTime = time
+        self.sender = sender
+        self.signer = signer
+        self.data = data
         
         geocoder.reverseGeocodeLocation(location!, completionHandler: { (placemarks, error) in
             
@@ -152,6 +189,11 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         // add some more check's if for some reason location manager is nil
             print("location manager is nil")
         }
+        
+        newGeolocation.data = data
+        newGeolocation.dateTime = dateTime
+        newGeolocation.sender = sender
+        newGeolocation.signer = signer
         
         geoLocationArray.append(newGeolocation)
         //THIS MIGHT REALLY BREAK MIGHT NEED TO RELOCATE THIS

@@ -75,7 +75,7 @@ class ConfirmationQRViewController: UIViewController {
         
         //let result = encrypt(encryptString, myPrivateKey)
         
-        setupQRCode(encryptString: encryptString, myPublicKey: myPublicKey!, myName: myName!)
+        setupQRCode(location: "\(lat),\(long)", dateTime: date, encryptString: encryptString, myPublicKey: myPublicKey!,myName: myName!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,12 +83,9 @@ class ConfirmationQRViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupQRCode(encryptString: String, myPublicKey: String, myName: String) {
+    func setupQRCode(location: String, dateTime: String, encryptString: String, myPublicKey: String, myName: String) {
         
-        let dataString = "\(encryptString),\(myPublicKey),\(myName)"
-        
-        
-        //WILL NEED TO ENCRYPTWITH MY PRIVATE KEY HERE privateKey(dataString)
+        let dataString = "\(location),\(dateTime),\(encryptString),\(myPublicKey),\(myName)"
         
         let data = dataString.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         

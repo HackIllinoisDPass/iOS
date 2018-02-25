@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class ConfirmationScannerViewController: UIViewController {
     
@@ -107,10 +108,12 @@ class ConfirmationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        if (modifiedMessageArray.count == 3) {
-            let encyptedMessage = String(modifiedMessageArray[0])
-            let verifierPublicKey = String(modifiedMessageArray[1])
-            let verifierName = String(modifiedMessageArray[2])
+        if (modifiedMessageArray.count == 5) {
+            let location = String(modifiedMessageArray[0])
+            let dateTime = String(modifiedMessageArray[1])
+            let encyptedMessage = String(modifiedMessageArray[2])
+            let verifierPublicKey = String(modifiedMessageArray[3])
+            let verifierName = String(modifiedMessageArray[4])
             
             //save user to core data
             let user = User(context: PersistentService.context)
@@ -118,8 +121,30 @@ class ConfirmationScannerViewController: UIViewController {
             user.publicKey = verifierPublicKey
             PersistentService.saveContext()
             
+            //getting the owner data
+            var name: String
+            var myPublicKey: String
+            var myPrivateKey: String
+            
+            let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+            do {
+                let owner = try PersistentService.context.fetch(fetchRequest)
+                name = owner[0].name!
+                myPublicKey = owner[0].publicKey!
+                myPrivateKey = owner[0].privateKey!
+                
+            } catch{
+                print("failed getting name")
+                return
+            }
+            
             //should post to blockchain here
             
+            let client = DPassContractClient()
+            
+            client.createContract(from: .fillcontract, priv: myPrivateKey, signer: verifierPublicKey, location: location, time: dateTime, encData: encyptedMessage, completion: { _ in
+                return
+            })
             
             //Display the confirmation to the user
             let alertPrompt = UIAlertController(title: "Scan Succesfull!", message: "Record sucessfully created!", preferredStyle: .alert)

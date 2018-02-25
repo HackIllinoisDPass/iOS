@@ -20,7 +20,7 @@ class DPassEventsClient: APIClient {
         self.init(configuration: .default)
     }
     
-    func getEvents(from DPassAPIType: DPassAPI, address: String, sender: String, completion: @escaping (Result<[DPassGetEventsResult]?, APIError>) -> Void) {
+    func getEvents(from DPassAPIType: DPassAPI, address: String, sender: String, completion: @escaping (Result<DPassGetObjectResult?, APIError>) -> Void) {
         
         var request = DPassAPIType.request
         
@@ -33,10 +33,8 @@ class DPassEventsClient: APIClient {
         let urlObject = URL(string: finalURL)
         request.url = urlObject
         
-        print(request)
-        
-        fetchArray(with: request, decode: {json -> [DPassGetEventsResult]? in
-            guard let dPassGetEventsResult = json as? [DPassGetEventsResult] else { return  nil }
+        fetch(with: request, decode: {json -> DPassGetObjectResult? in
+            guard let dPassGetEventsResult = json as? DPassGetObjectResult else { return  nil }
             return dPassGetEventsResult
         }, completion: completion)
     }

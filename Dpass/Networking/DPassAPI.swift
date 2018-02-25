@@ -12,6 +12,7 @@ import Foundation
 enum DPassAPI {
     case register
     case getevents
+    case fillcontract
 }
 
 //This extention to API will add functionality and conform to Enpoint
@@ -29,6 +30,7 @@ extension DPassAPI: Endpoint {
         switch self {
         case .register: return "/createwallet"
         case .getevents: return "/getevents"
+        case .fillcontract: return "/fillcontract"
         }
     }
 }
