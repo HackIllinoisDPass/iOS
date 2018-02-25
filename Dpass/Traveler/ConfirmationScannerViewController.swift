@@ -107,9 +107,16 @@ class ConfirmationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        if (modifiedMessageArray.count == 2) {
+        if (modifiedMessageArray.count == 3) {
             let encyptedMessage = String(modifiedMessageArray[0])
             let verifierPublicKey = String(modifiedMessageArray[1])
+            let verifierName = String(modifiedMessageArray[2])
+            
+            //save user to core data
+            let user = User(context: PersistentService.context)
+            user.name = verifierName
+            user.publicKey = verifierPublicKey
+            PersistentService.saveContext()
             
             //should post to blockchain here
             

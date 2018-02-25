@@ -121,12 +121,17 @@ class VerificationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        if (modifiedMessageArray.count == 4) {
+        if (modifiedMessageArray.count == 5) {
             date = String(modifiedMessageArray[0])
             lat = String(modifiedMessageArray[1])
             long = String(modifiedMessageArray[2])
             publicKey = String(modifiedMessageArray[3])
             name = String(modifiedMessageArray[4])
+            
+            let user = User(context: PersistentService.context)
+            user.name = name
+            user.publicKey = publicKey
+            PersistentService.saveContext()
             
             convertToGeoCode(lat: lat, long: long, completionHandler: {
                 guard let city = geoLocationObject?.city, let countryShortName = geoLocationObject?.countryShortName else{
@@ -157,8 +162,8 @@ class VerificationScannerViewController: UIViewController {
         DestViewController.date = date
         DestViewController.lat = lat
         DestViewController.long = long
+        DestViewController.name = name
         DestViewController.publicKey = publicKey
-        
     }
     
     func callCameraSegue() {

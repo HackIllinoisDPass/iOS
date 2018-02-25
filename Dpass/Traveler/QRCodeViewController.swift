@@ -40,17 +40,27 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        //print("locations = \(locValue.latitude) \(locValue.longitude)")
-        let currLocation = "\(locValue.latitude),\(locValue.longitude)"
         
-        setupQRCode(location: currLocation, publicKey: "12345")
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let currLocation = "\(locValue.latitude),\(locValue.longitude)"
+        setupQRCode(location: currLocation)
     }
     
-    func setupQRCode(location: String, publicKey: String) {
+    func setupQRCode(location: String) {
+        var name: String
+        var publicKey: String
         
-        guard let name = getName() else {
-            print("name not set")
+        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+        do {
+            let owner = try PersistentService.context.fetch(fetchRequest)
+            
+            name = owner[0].name!
+            publicKey = owner[0].publicKey!
+            
+            print(name)
+            print(publicKey)
+        } catch{
+            print("failed getting name")
             return
         }
         
@@ -73,18 +83,6 @@ class QRCodeViewController: UIViewController, CLLocationManagerDelegate{
         
         QRImageView.image = UIImage(ciImage: transformedImage)
     }
-    
-    func getName() -> String?{
-        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
-        do {
-            let owner = try PersistentService.context.fetch(fetchRequest)
-            return owner[0].name
-        } catch{
-            print("failed getting name")
-            return nil
-        }
-    }
-
 }
 
 extension Date

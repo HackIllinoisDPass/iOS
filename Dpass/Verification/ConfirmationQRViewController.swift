@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ConfirmationQRViewController: UIViewController {
 
@@ -17,18 +18,64 @@ class ConfirmationQRViewController: UIViewController {
     var date: String?
     var lat: String?
     var long: String?
+    var name: String?
     var publicKey: String?
+    
+    var myName: String?
+    var myPublicKey: String?
+    var myPrivateKey: String?
 
     @IBAction func doneAction(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let date = date, let lat = lat, let long = long, let publicKey = publicKey{
-            setupQRCode(date: date, lat: lat, long: long, publicKey: publicKey)
-        }else{
+        
+        guard let date = date, let lat = lat, let long = long else{
             return
         }
+        
+        let fetchRequest: NSFetchRequest<Owner> = Owner.fetchRequest()
+        do {
+            let owner = try PersistentService.context.fetch(fetchRequest)
+            myName = owner[0].name
+            myPublicKey = owner[0].publicKey
+            myPrivateKey = owner[0].privateKey
+            
+            print(myName!)
+            print(myPublicKey!)
+        } catch{
+            print("failed getting name and keys")
+            return
+        }
+        
+        //must create encrypted string here
+        
+        let rsa: RSAWrapper? = RSAWrapper()
+        
+        let success: Bool = (rsa?.generateKeyPair(keySize: 2048, privateTag: myPrivateKey!, publicTag: myPublicKey!))!
+        
+        if (!success) {
+            print("Failed")
+            return
+        }
+        
+        let encryptString = "\(date),\(lat),\(long)\(publicKey!)"
+        
+        let encryption = rsa?.encryptBase64(text: encryptString)
+        
+        print(encryption)
+        
+        let decription = rsa?.decpryptBase64(encrpted: encryption!)
+        
+        print(decription)
+        
+         //use the private key on this string
+        
+        //let result = encrypt(encryptString, myPrivateKey)
+        
+        setupQRCode(encryptString: encryptString, myPublicKey: myPublicKey!, myName: myName!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,9 +83,10 @@ class ConfirmationQRViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupQRCode(date: String, lat: String, long: String, publicKey: String) {
-        let realDataString = "\(date),\(lat),\(long),\(publicKey)"
-        let dataString = "\(date),\(publicKey)"
+    func setupQRCode(encryptString: String, myPublicKey: String, myName: String) {
+        
+        let dataString = "\(encryptString),\(myPublicKey),\(myName)"
+        
         
         //WILL NEED TO ENCRYPTWITH MY PRIVATE KEY HERE privateKey(dataString)
         
@@ -58,15 +106,4 @@ class ConfirmationQRViewController: UIViewController {
         
         QRImageView.image = UIImage(ciImage: transformedImage)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
 }
