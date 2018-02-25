@@ -43,8 +43,8 @@ class ConfirmationQRViewController: UIViewController {
             myPublicKey = owner[0].publicKey
             myPrivateKey = owner[0].privateKey
             
-            print(myName!)
-            print(myPublicKey!)
+//            print(myName!)
+//            print(myPublicKey!)
         } catch{
             print("failed getting name and keys")
             return
@@ -65,17 +65,15 @@ class ConfirmationQRViewController: UIViewController {
         
         let encryption = rsa?.encryptBase64(text: encryptString)
         
-        print(encryption)
-        
         let decription = rsa?.decpryptBase64(encrpted: encryption!)
-        
-        print(decription)
         
          //use the private key on this string
         
         //let result = encrypt(encryptString, myPrivateKey)
         
-        setupQRCode(location: "\(lat),\(long)", dateTime: date, encryptString: encryptString, myPublicKey: myPublicKey!,myName: myName!)
+        let locationFinal = "\(lat),\(long)"
+        
+        setupQRCode(location: locationFinal, dateTime: date, encryptString: encryptString, myPublicKey: myPublicKey!,myName: myName!)
     }
     
     override func didReceiveMemoryWarning() {

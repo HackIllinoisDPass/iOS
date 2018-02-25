@@ -108,12 +108,15 @@ class ConfirmationScannerViewController: UIViewController {
         
         let modifiedMessageArray = decodedMessage.split(separator: ",")
         
-        if (modifiedMessageArray.count == 5) {
-            let location = String(modifiedMessageArray[0])
-            let dateTime = String(modifiedMessageArray[1])
-            let encyptedMessage = String(modifiedMessageArray[2])
-            let verifierPublicKey = String(modifiedMessageArray[3])
-            let verifierName = String(modifiedMessageArray[4])
+        print(modifiedMessageArray)
+        
+        if (modifiedMessageArray.count == 6) {
+            let lat = String(modifiedMessageArray[0])
+            let long = String(modifiedMessageArray[1])
+            let dateTime = String(modifiedMessageArray[2])
+            let encyptedMessage = String(modifiedMessageArray[3])
+            let verifierPublicKey = String(modifiedMessageArray[4])
+            let verifierName = String(modifiedMessageArray[5])
             
             //save user to core data
             let user = User(context: PersistentService.context)
@@ -138,11 +141,13 @@ class ConfirmationScannerViewController: UIViewController {
                 return
             }
             
+            let locationiFinal = "\(lat),\(long)"
+            
             //should post to blockchain here
             
             let client = DPassContractClient()
             
-            client.createContract(from: .fillcontract, priv: myPrivateKey, signer: verifierPublicKey, location: location, time: dateTime, encData: encyptedMessage, completion: { _ in
+            client.createContract(from: .fillcontract, priv: myPrivateKey, signer: verifierPublicKey, location: locationiFinal, time: dateTime, encData: encyptedMessage, completion: { _ in
                 return
             })
             
@@ -164,7 +169,6 @@ class ConfirmationScannerViewController: UIViewController {
         let alertPrompt = UIAlertController(title: "Could not scan QR code", message: "Invalid QR code", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            print("NOTHING TO DO")
         })
         
         alertPrompt.addAction(action)
