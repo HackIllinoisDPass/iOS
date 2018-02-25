@@ -61,7 +61,7 @@ class ConfirmationQRViewController: UIViewController {
             return
         }
         
-        let encryptString = "\(date),\(lat),\(long)\(publicKey!)"
+        let encryptString = "\(date),\(lat),\(long),\(publicKey!)"
         
         let encryption = rsa?.encryptBase64(text: encryptString)
         
@@ -73,7 +73,7 @@ class ConfirmationQRViewController: UIViewController {
         
         let locationFinal = "\(lat),\(long)"
         
-        setupQRCode(location: locationFinal, dateTime: date, encryptString: encryptString, myPublicKey: myPublicKey!,myName: myName!)
+        setupQRCode(location: locationFinal, dateTime: date, encryptString: encryption!, myPublicKey: myPublicKey!, myName: myName!)
     }
     
     override func didReceiveMemoryWarning() {
