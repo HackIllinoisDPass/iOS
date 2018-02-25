@@ -21,7 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //let longArray = [-122.03072304117417]
     var latArray: [Double] = []
     var longArray: [Double] = []
-    var locationTitle: [String] = []
+    //var locationTitle: [String] = []
     var time: [String] = []
     var pins = [Pin]()
     let client = DPassEventsClient()
@@ -74,21 +74,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
                 if(self.latArray.count == 0){
                     self.initialCoordinate = CLLocationCoordinate2D(latitude: 40.1106, longitude: -88.2073)
+                    self.mapView.setCenter(self.initialCoordinate, animated: true)
                 } else {
                     self.initialCoordinate = CLLocationCoordinate2D(latitude: self.latArray.last!, longitude: self.longArray.last!)
+                    let newCoord = CLLocationCoordinate2D(latitude: self.latArray.last!, longitude: self.longArray.last!)
+                    self.mapView.setCenter(newCoord, animated: true)
                 }
 
-                self.mapView.setCenter(self.initialCoordinate, animated: true)
+                
                 self.mapView.delegate = self
                 
                 for element in 0..<self.latArray.count {
-//                    let annotation = MKPointAnnotation()
-//                    annotation.coordinate = initialCoordinate
-//                    annotation.title = "TEMP"//self.locationTitle[element]
-//                    annotation.subtitle = self.time[element]
-//                    self.mapView.addAnnotation(annotation)
-                    let tempPin = Pin(title: self.locationTitle[element], dateTime: self.time[element], coordinate: CLLocationCoordinate2D(latitude: self.latArray[element], longitude: self.longArray[element]))
-                    self.pins.append(tempPin)
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = self.initialCoordinate
+                    annotation.title = ""//self.locationTitle[element]
+                    annotation.subtitle = self.time[element]
+                    self.mapView.addAnnotation(annotation)
+//                    let tempPin = Pin(title: "", dateTime: self.time[element], coordinate: CLLocationCoordinate2D(latitude: self.latArray[element], longitude: self.longArray[element]))
+//                    self.pins.append(tempPin)
                     self.coords.append(CLLocationCoordinate2D(latitude: self.latArray[element], longitude: self.longArray[element]))
                 }
                 if(self.coords.count == 0) {
@@ -99,7 +102,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.mapView.add(testline)
                 self.mapView.region = MKCoordinateRegion(center: self.coords[0], span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
                 
-                self.mapView.addAnnotations(self.pins)
+//                self.mapView.addAnnotations(self.pins)
             case .failure(let error):
                 print("the error \(error)")
             }

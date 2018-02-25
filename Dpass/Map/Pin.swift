@@ -15,7 +15,7 @@ class Pin: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     
     init(title: String, dateTime: String, coordinate: CLLocationCoordinate2D) {
-        self.title = title
+        self.title = ""
         self.dateTime = dateTime
         self.coordinate = coordinate
         
