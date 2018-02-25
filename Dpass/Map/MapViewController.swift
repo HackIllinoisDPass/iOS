@@ -21,8 +21,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //let longArray = [-122.03072304117417]
     var latArray: [Double] = []
     var longArray: [Double] = []
-    let tempLocationTitle = "TEMP NAME"
-    let time = ["dd-MM-yyyy", "temp"]
+    var locationTitle: [String] = []
+    var time: [String] = []
     
     let client = DPassEventsClient()
     
@@ -34,6 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         latArray = []
         longArray = []
+        time = []
         
         var publicKey: String?
         let sender = "true"
@@ -65,6 +66,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     let longString = String(locationArray![1])
                     self.latArray.append(Double(latString)!)
                     self.longArray.append(Double(longString)!)
+                    self.time.append(event.time!)
+                    //self.locationTitle.append(event)JEREMY FIX THIS
+                    
                 }
                 
                 let tempCoordinate = CLLocationCoordinate2DMake(self.latArray.last!, self.longArray.last!)
@@ -73,10 +77,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 self.mapView.setRegion(region, animated: true)
                 
-                for element in 0...self.latArray.count {
+                for element in 0..<self.latArray.count {
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = tempCoordinate
-                    annotation.title = self.tempLocationTitle
+                    annotation.title = "TEMP"//self.locationTitle[element]
                     annotation.subtitle = self.time[element]
                     self.mapView.addAnnotation(annotation)
                 }
