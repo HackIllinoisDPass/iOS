@@ -39,6 +39,9 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
     
     let client = DPassEventsClient()
     
+    var iterationIndex = 0
+    var events: [DPassGetEventsResult] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,13 +76,20 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
                     return
                 }
                 
-                for event in resultObject.events!{
-                    let locationArray = event.loc?.split(separator: ",")
-                    let lat = String(locationArray![0])
-                    let long = String(locationArray![1])
-                    
-                    self.convertToGeoCode(lat: lat, long: long, time: event.time, sender: event._sender, signer: event._signer, data: event.encData)
+                print(resultObject.events?.count)
+                
+                if resultObject.events?.count == 0 {
+                    return
                 }
+                self.iterationIndex = 0
+                self.events = resultObject.events!
+                
+                let locationArray = self.events[0].loc?.split(separator: ",")
+                let lat = String(locationArray![0])
+                let long = String(locationArray![1])
+                
+                self.convertToGeoCode(lat: lat, long: long, time: self.events[0].time, sender: self.events[0]._sender, signer: self.events[0]._signer, data: self.events[0].encData)
+                
             case .failure(let error):
                 print("the error \(error)")
             }
@@ -150,13 +160,29 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         self.signer = signer
         self.data = data
         
+        
+        print("outsidegeocoder")
         geocoder.reverseGeocodeLocation(location!, completionHandler: { (placemarks, error) in
+            
+            print("reversegeocode")
             
             if error == nil, let placemark = placemarks, !placemark.isEmpty {
                 self.placemark = placemark.last
             }
             
             self.parsePlacemarks()
+            
+            if (self.iterationIndex+1) < (self.events.count){
+                
+                print("in IF")
+                self.iterationIndex = self.iterationIndex+1
+                
+                let locationArray = self.events[self.iterationIndex].loc?.split(separator: ",")
+                let lat = String(locationArray![0])
+                let long = String(locationArray![1])
+                
+                self.convertToGeoCode(lat: lat, long: long, time: self.events[self.iterationIndex].time, sender: self.events[self.iterationIndex]._sender, signer: self.events[self.iterationIndex]._signer, data: self.events[self.iterationIndex].encData)
+            }
         })
     }
     
@@ -193,5 +219,6 @@ class LedgerTableViewController: UITableViewController, CLLocationManagerDelegat
         geoLocationArray.append(newGeolocation)
         //THIS MIGHT REALLY BREAK MIGHT NEED TO RELOCATE THIS
         tableView.reloadData()
+        print("called parse placemakrs")
     }
 }
