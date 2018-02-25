@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17103745204319BD009C1950 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17103744204319BD009C1950 /* Pin.swift */; };
 		A906F15120413FAD009730D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A906F15020413FAD009730D1 /* AppDelegate.swift */; };
 		A906F15620413FAD009730D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A906F15420413FAD009730D1 /* Main.storyboard */; };
 		A906F15920413FAD009730D1 /* Dpass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A906F15720413FAD009730D1 /* Dpass.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17103744204319BD009C1950 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		A906F14D20413FAD009730D1 /* Dpass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dpass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A906F15020413FAD009730D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A906F15520413FAD009730D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				A906F1C9204258BE009730D1 /* MapViewController.swift */,
+				17103744204319BD009C1950 /* Pin.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				A906F17720415BE9009730D1 /* ConfirmationScannerViewController.swift in Sources */,
 				A906F1CA204258BE009730D1 /* MapViewController.swift in Sources */,
 				A906F1962042189B009730D1 /* RegistrationViewController.swift in Sources */,
+				17103745204319BD009C1950 /* Pin.swift in Sources */,
 				A906F1B420421CAC009730D1 /* APIResponse.swift in Sources */,
 				A906F1D82042ACDB009730D1 /* DPassContractClient.swift in Sources */,
 				A906F1852041C250009730D1 /* LedgerTableViewController.swift in Sources */,
